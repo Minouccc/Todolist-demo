@@ -1,18 +1,21 @@
 import React, { memo, useState } from 'react'
 
 const Todolist = memo(() => {
-  const [newtask,setNewTask] = useState("")
+  const [newtask,setNewTask] = useState('')
   const [todolist,setTodolist] = useState([])  
 
   const handleChange = (event) => {
     setNewTask(event.target.value)
   }
   const addTask = () => {
-    const newTodolist = [...todolist,newtask]
-    setTodolist(newTodolist)
+    const task = {
+        id: todolist.length === 0 ? 1 : todolist[todolist.length-1].id + 1,
+        taskName: newtask,
+    }
+    setTodolist(task.taskName === '' ? todolist : [...todolist,task])
   }
-  const deleteTask = (taskName) => {
-    const newTodolist = todolist.filter(task => task !== taskName)
+  const deleteTask = (id) => {
+    const newTodolist = todolist.filter(task => task.id !== id)
     setTodolist(newTodolist)
   }
   return (
@@ -25,8 +28,8 @@ const Todolist = memo(() => {
             {todolist.map((task,index) => {
                 return(
                     <div className='task-list' key={index}>
-                        <div className="task">{task}</div>
-                        <button className='delete-btn' onClick={()=> deleteTask(task)}>delete</button>
+                        <div className="task">{task.taskName}</div>
+                        <button className='delete-btn' onClick={()=> deleteTask(task.id)}>delete</button>
                     </div>
                 )
             })}

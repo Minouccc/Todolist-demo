@@ -1,5 +1,3 @@
-.to-do-list {}
-
 .add-task {
     display: flex;
     justify-content: center;
@@ -12,4 +10,26 @@
 
 .add-btn {
     margin-left: 10px;
+}
+
+.content {
+    width: 40%;
+    margin: 20px auto;
+}
+
+.task-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.task {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.delete-btn {
+    margin-left: 10px;
+    border-radius: 20px;
 }

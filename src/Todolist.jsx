@@ -1,4 +1,5 @@
 import React, { memo, useState } from 'react'
+import Task from './Task'
 
 const Todolist = memo(() => {
   const [newtask,setNewTask] = useState('')
@@ -25,12 +26,13 @@ const Todolist = memo(() => {
             <button className="add-btn" onClick={addTask}>Add Task</button>
         </div>
         <div className="content">
-            {todolist.map((task,index) => {
+            {todolist.map((task) => {
                 return(
-                    <div className='task-list' key={index}>
-                        <div className="task">{task.taskName}</div>
-                        <button className='delete-btn' onClick={()=> deleteTask(task.id)}>delete</button>
-                    </div>
+                    <Task 
+                    id = {task.id}
+                    taskName = {task.taskName}
+                    deleteTask= {deleteTask}
+                    />
                 )
             })}
         </div>

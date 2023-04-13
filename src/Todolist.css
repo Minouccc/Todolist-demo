@@ -29,6 +29,11 @@
     font-weight: 600;
 }
 
+.complete-btn {
+    margin-left: 10px;
+    border-radius: 20px;
+}
+
 .delete-btn {
     margin-left: 10px;
     border-radius: 20px;

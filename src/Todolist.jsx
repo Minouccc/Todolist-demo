@@ -12,11 +12,22 @@ const Todolist = memo(() => {
     const task = {
         id: todolist.length === 0 ? 1 : todolist[todolist.length-1].id + 1,
         taskName: newtask,
+        completed: false
     }
     setTodolist(task.taskName === '' ? todolist : [...todolist,task])
   }
   const deleteTask = (id) => {
     const newTodolist = todolist.filter(task => task.id !== id)
+    setTodolist(newTodolist)
+  }
+  const completeTask = (id) => {
+    const newTodolist = todolist.map(task => {
+        if(task.id === id) {
+            return {...task,completed: true}
+        } else {
+            return task
+        }
+    })
     setTodolist(newTodolist)
   }
   return (
@@ -31,6 +42,8 @@ const Todolist = memo(() => {
                     <Task 
                     id = {task.id}
                     taskName = {task.taskName}
+                    completed = {task.completed}
+                    completeTask = {completeTask}
                     deleteTask= {deleteTask}
                     />
                 )
